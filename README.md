@@ -2,7 +2,7 @@
 
 ## Description
 This repository contains three Python scripts that you can use to convert your CSV consumption files into the specific data formats accepted by SolarPlus.  
-I developed these scripts as an exercise to improve my Python skills with the help of ChatGPT. So, if you have any suggestions or would like to contribute, feel free to do so. 
+I developed these scripts as an exercise to improve my Python skills with the help of ChatGPT. So, if you have any suggestions or would like to contribute, feel free to do so by forking the repository and submitting a pull request. 
 
 ## How to use
 You can simply clone the repository or copy the code from the Python files. The script relies on basic functions supported by Pandas.
