@@ -23,7 +23,7 @@ The steps to use are similar for all three scripts. You just need to select the 
 * Run the script  
   * for the ```row-to-a-day.py``` script, you'll be prompted for some inputs
     * type ```Y``` and press ```Enter``` on your keyboard if you want to use a filter; otherwise, type ```N``` and press  ```Enter```
-      * Use the filter when the first column of the CSV contains an identifier that can help you identify which rows have consumption data (check the section [here]((#when-the-first-column-contains-ids-requires-filter)))
+      * Use the filter when the first column of the CSV contains an identifier that can help you identify which rows have consumption data (check the section [here](#when-the-first-column-contains-ids-requires-filter))
       
 ## Data handling logic
 
@@ -64,3 +64,6 @@ The steps to use are similar for all three scripts. You just need to select the 
 * To handle cases where extra columns exist after the useful data in the CSV file (such as identifier column values at the end of each row), the usable number of columns is calculated based on the time interval identified, and any columns after the usable ones are deleted
 * Any missing kWh/kW values are filled with the same value as the last valid predecessor column's value
 * Any missing days are filled with the same values as the last valid day's values
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
