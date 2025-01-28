@@ -1,22 +1,4 @@
 import pandas as pd
-import numpy as np
-
-def convert_date(value):
-    # Check if the value is numeric (Excel-style serial date)
-    if isinstance(value, str):
-         # Try to convert the string to a float (in case it's a serial number in string format)
-        try:
-            value = float(value)
-        except ValueError:
-            # If the conversion fails, it means it's a date in string format
-            return pd.to_datetime(value, dayfirst = True, format = "mixed", errors='coerce').normalize()
-    
-    # Now that the value is numeric, handle the Excel serial dates
-    if isinstance(value, (int, float)):
-        return pd.to_datetime(value, origin='1900-01-01', unit='D').normalize() - pd.Timedelta(days=1)
-    
-    # If we reach here, something is wrong with the value type
-    return pd.NaT  # Return Not a Time (NaT) for any invalid case
 
 # Define a function to preprocess and handle different date formats and Excel-style serial dates
 def parse_dates(value):
@@ -86,38 +68,6 @@ common_length = df['row_lengths'].value_counts().idxmax()
 
 # Keep all rows that have the same row length as the most common row length
 df = df[df['row_lengths'] == common_length]
-
-
-"""
-The next few lines of code check whether the column after the date column or the last column represent daily totals or not (within 0.5% difference). If yes, those columns are dropped.
-"""
-
-# Sum of columns after the 2nd column (starting from index 2)
-#sum_after_2nd = df.iloc[:, 2:].sum(axis=1)
-
-# Sum of columns excluding the first and the last column
-#sum_before_last = df.iloc[:, 1:-1].sum(axis=1)
-
-# Use numpy's isclose to check if the 2nd column is within 0.5% of the sum after it
-#tolerance_value = 0.005
-#tolerance_2nd = tolerance_value * sum_after_2nd
-#tolerance_last = tolerance_value * sum_before_last
-
-# Check if the 2nd column and last column are within the tolerance of their respective sums
-#is_2nd_column_close = np.all(np.isclose(df[df.columns[1]], sum_after_2nd, atol=tolerance_2nd))
-#is_last_column_close = np.all(np.isclose(df[df.columns[-1]], sum_before_last, atol=tolerance_last))
-
-# Drop the 2nd column if the condition is true
-#if is_2nd_column_close:
-#    df.drop(df.columns[1], axis=1, inplace=True)
-
-# Drop the last column if the condition is true
-#if is_last_column_close:
- #   df.drop(df.columns[-1], axis=1, inplace=True)
-
-"""
-The daily totals check ends here.
-"""
 
 # Check the number of required columns by calculating the time interval and then remove the extra columns
 time_interval = round(1440/common_length)
