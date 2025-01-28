@@ -1,5 +1,4 @@
 # Consumption CSV file fixer for SolarPlus (solarplus-csv-fixer)
-A set of Python scripts to convert and format CSV consumption data to meet the specific requirements of SolarPlus, including handling different time intervals and data structures.
 
 ## Description
 This repository contains 3 Python scripts that you can use for converting your CSV consumption files to the specific data formats that SolarPlus accepts.  
@@ -29,7 +28,6 @@ The steps to use are similar for all 3 scripts. You just need to select the appr
 ## Data handling logic
 
 ### 2-column method
-<!-- ![2 column sample](images/2-column-format.png) -->  
 <img src="images/2-column-format.png" alt="2 column sample" width="30%" />
 
 * The first 2 columns of the CSV file are read into a Pandas DataFrame
@@ -40,7 +38,6 @@ The steps to use are similar for all 3 scripts. You just need to select the appr
 * Any missing kWh/kW values are set with the same value as their last valid predecessor value 
 
 ### 3-column method
-<!-- ![3 column sample](images/3-column-format.png) -->  
 <img src="images/3-column-format.png" alt="3 column sample" width="40%" /> 
 
 * The first 3 columns of the CSV file are read into a Pandas DataFrame
@@ -49,11 +46,11 @@ The steps to use are similar for all 3 scripts. You just need to select the appr
 
 ### Row to a day method
 #### First column has some IDs (needs for filters)
+> **Note: If the first column has same IDs for all rows, you can enter that ID as the filter value**
+
 ![row to a day with filter sample](images/row-to-a-day-format-with-filter.png)
 #### First column has dates (no need for filters)
 ![row to a day with no filter sample](images/row-to-a-day-format-no-filter.png)  
-
-> **Note: If the first column has same IDs for all rows, you can enter that ID as the filter value**
 
 * Full CSV file is read into a Pandas DataFrame
 * Empty rows are columns are deleted
